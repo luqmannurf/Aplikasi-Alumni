@@ -1,0 +1,135 @@
+-- phpMyAdmin SQL Dump
+-- version 3.1.3.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jun 02, 2014 at 03:06 PM
+-- Server version: 5.1.33
+-- PHP Version: 5.2.9
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `dbalumni`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_alumni`
+--
+
+CREATE TABLE IF NOT EXISTS `t_alumni` (
+  `npm` varchar(7) NOT NULL,
+  `nama` varchar(40) NOT NULL,
+  `prodiID` varchar(10) DEFAULT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `tanggal_lulus` date NOT NULL,
+  `tanggal_wisuda` date NOT NULL,
+  `no_hp` varchar(12) NOT NULL,
+  `no_ijazah` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `scan_ijazah` text NOT NULL,
+  `scan_transkrip_nilai_1` text NOT NULL,
+  `scan_transkrip_nilai_2` text NOT NULL,
+  `photo` varchar(100) NOT NULL,
+  `kd_sk` varchar(100) NOT NULL,
+  PRIMARY KEY (`npm`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_alumni`
+--
+
+INSERT INTO `t_alumni` (`npm`, `nama`, `prodiID`, `alamat`, `tanggal_lulus`, `tanggal_wisuda`, `no_hp`, `no_ijazah`, `email`, `scan_ijazah`, `scan_transkrip_nilai_1`, `scan_transkrip_nilai_2`, `photo`, `kd_sk`) VALUES
+('2008123', 'Yayat yatiman', 'KG', 'test', '2014-06-04', '2014-06-05', '081906472627', '33333333333', 'yayat@computermail.net', '2008123_17802_562182853798257.jpg', '2008123_Academic Transcript Page 1.jpg', '2008123_403067_2581096723606_1427601494_n.jpg', '2008123_yayat yatiman.jpg', '11111111111');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_jurusan`
+--
+
+CREATE TABLE IF NOT EXISTS `t_jurusan` (
+  `prodiid` varchar(10) NOT NULL,
+  `jenjang` varchar(10) NOT NULL,
+  `jurusan` varchar(40) NOT NULL,
+  PRIMARY KEY (`prodiid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_jurusan`
+--
+
+INSERT INTO `t_jurusan` (`prodiid`, `jenjang`, `jurusan`) VALUES
+('KG', 'D1', 'Komputer Grafis dan Multimedia'),
+('KP', 'D1', 'Komputer Programmer'),
+('KA', 'D1', 'Komputer Akuntansi'),
+('57-401', 'D3', 'Manajemen Informatika'),
+('55-201', 'S1', 'Teknik Informatika');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_kelulusan`
+--
+
+CREATE TABLE IF NOT EXISTS `t_kelulusan` (
+  `kd_sk` varchar(100) NOT NULL,
+  `no_sk` varchar(100) NOT NULL,
+  `tanggal_sk` date NOT NULL,
+  `tanggal_wisuda` date NOT NULL,
+  `scan_sk` varchar(100) NOT NULL,
+  PRIMARY KEY (`kd_sk`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_kelulusan`
+--
+
+INSERT INTO `t_kelulusan` (`kd_sk`, `no_sk`, `tanggal_sk`, `tanggal_wisuda`, `scan_sk`) VALUES
+('11111111111', '2222222222222', '2014-06-04', '2014-06-12', '11111111111_Akte Kelahiran.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_login`
+--
+
+CREATE TABLE IF NOT EXISTS `t_login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `level` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `t_login`
+--
+
+INSERT INTO `t_login` (`id`, `username`, `password`, `level`) VALUES
+(1, 'admin', 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_status_pekerjaan`
+--
+
+CREATE TABLE IF NOT EXISTS `t_status_pekerjaan` (
+  `npm` varchar(20) NOT NULL,
+  `status_pekerjaan` varchar(20) NOT NULL,
+  `nama_pt` text NOT NULL,
+  `alamat_pt` text NOT NULL,
+  `departemen` text NOT NULL,
+  `mulai_bekerja` date NOT NULL,
+  PRIMARY KEY (`npm`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_status_pekerjaan`
+--
+
+INSERT INTO `t_status_pekerjaan` (`npm`, `status_pekerjaan`, `nama_pt`, `alamat_pt`, `departemen`, `mulai_bekerja`) VALUES
+('2008123', 'Sudah Bekerja', 'pt abc', 'test', 'test', '2014-06-19');
